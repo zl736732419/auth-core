@@ -14,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_user")
 public class User implements Pricipal {
+	public static final String PRINCIPAL_TYPE="user";
 	@Id
 	@GeneratedValue
 	private Long id;

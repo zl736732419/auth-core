@@ -14,6 +14,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_role")
 public class Role implements Pricipal {
+	public static final String PRINCIPAL_TYPE="role";
 	@Id
 	@GeneratedValue
 	private Long id;
