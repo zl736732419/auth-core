@@ -40,25 +40,42 @@ public class ControllerOper {
 	 * 所对应的资源id
 	 */
 	private Integer rid; //关联controllerResource外键
+	private String rsn; //关联controllerResource资源对象sn
 
 	public Long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
+	public Integer getIndexRes() {
+		return indexRes;
+	}
+
+	public String getMethodName() {
+		return methodName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public Integer getRid() {
+		return rid;
+	}
+
+	public String getRsn() {
+		return rsn;
 	}
 
 	public String getSn() {
 		return sn;
 	}
 
-	public void setSn(String sn) {
-		this.sn = sn;
+	public void setId(Long id) {
+		this.id = id;
 	}
 
-	public String getMethodName() {
-		return methodName;
+	public void setIndexRes(Integer indexRes) {
+		this.indexRes = indexRes;
 	}
 
 	public void setMethodName(String methodName) {
@@ -71,28 +88,20 @@ public class ControllerOper {
 		}
 	}
 
-	public String getName() {
-		return name;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
 
-	public Integer getIndexRes() {
-		return indexRes;
-	}
-
-	public void setIndexRes(Integer indexRes) {
-		this.indexRes = indexRes;
-	}
-
-	public Integer getRid() {
-		return rid;
-	}
-
 	public void setRid(Integer rid) {
 		this.rid = rid;
+	}
+
+	public void setRsn(String rsn) {
+		this.rsn = rsn;
+	}
+
+	public void setSn(String sn) {
+		this.sn = sn;
 	}
 
 }

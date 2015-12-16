@@ -23,11 +23,11 @@ public class ControllerResource implements SystemResource {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	private String classname;
+	private String classname; //classname，默认使用类的权限类名，可能会存在多个值
 	private Integer order; // 顺序
 	private ControllerResource parent;
 
-	private String sn; // 用于在系统中显示标识
+	private String sn; // 用于在系统中显示标识，默认使用类简单名
 
 	private String psn; // 父级资源标识
 
