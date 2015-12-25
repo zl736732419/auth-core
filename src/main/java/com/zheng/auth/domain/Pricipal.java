@@ -1,4 +1,4 @@
-package com.zheng.domain;
+package com.zheng.auth.domain;
 
 /**
  * 定义权限主体基类，用于管理权限 

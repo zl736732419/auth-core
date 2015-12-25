@@ -1,4 +1,4 @@
-package com.zheng.domain;
+package com.zheng.auth.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,6 +25,8 @@ public class ControllerResource implements SystemResource {
 	private String name;
 	private String classname; //classname，默认使用类的权限类名，可能会存在多个值
 	private Integer order; // 顺序
+	@ManyToOne
+	@JoinColumn(name = "parentId")
 	private ControllerResource parent;
 
 	private String sn; // 用于在系统中显示标识，默认使用类简单名
@@ -69,8 +71,7 @@ public class ControllerResource implements SystemResource {
 		this.order = order;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "parentId")
+	
 	public ControllerResource getParent() {
 		return parent;
 	}

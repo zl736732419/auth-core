@@ -1,4 +1,4 @@
-package com.zheng.domain;
+package com.zheng.auth.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
