@@ -1,4 +1,4 @@
-package com.zheng.auth.dao;
+package com.zheng.auth.dao.impl;
 
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
+import com.zheng.auth.dao.IBaseDao;
 import com.zheng.auth.dto.ObjectQuery;
 import com.zheng.auth.dto.Pager;
 
@@ -170,7 +171,7 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
 
 	@Override
 	public int getCount(ObjectQuery query) {
-		String hql = "select count(o) from " + clazz.getSimpleName() + " where 1=1 ";
+		String hql = "select count(o) from " + clazz.getSimpleName() + " o where 1=1 ";
 		if(query != null && !StringUtils.isBlank(query.getWhere())) {
 			hql += query.getWhere();
 		}

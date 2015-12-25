@@ -1,0 +1,503 @@
+/*鏂板寮�*/
+.icon-task-layout { /*甯冨眬绠＄悊鑺傜洰鍒朵綔鍓嶇殑鍥炬爣*/
+	background: url('../images/icons/itemMgnt_makePro.png') no-repeat center center;
+}
+
+.icon-import { /*甯冨眬绠＄悊鍙抽敭鑿滃崟瀵煎叆鍥炬爣*/
+	background: url('../images/icons/door-in.png') no-repeat;
+}
+
+.icon-export { /*甯冨眬绠＄悊鍙抽敭鑿滃崟瀵煎嚭鍥炬爣*/
+	background: url('../images/icons/door-out.png') no-repeat;
+}
+
+.icon-door-open { /*绱犳潗绠＄悊鍙抽敭鑿滃崟瀹℃牳閫氳繃鍥炬爣*/
+	background: url('../images/icons/application-exit-2.png') no-repeat;
+}
+
+.icon-door-close { /*绱犳潗绠＄悊鍙抽敭鑿滃崟瀹℃牳椹冲洖鍥炬爣*/
+	background: url('../images/icons/application-exit.png') no-repeat;
+}
+
+.icon-door-group { /*绱犳潗绠＄悊鍙抽敭鑿滃崟鍒嗙被鍥炬爣*/
+	background: url('../images/icons/application-cascade.png') no-repeat;
+}
+
+.icon-upload {
+	background: url('../images/icons/arrow-up.gif') no-repeat;
+}
+
+.icon-download {
+	background: url('../images/icons/arrow-down.gif') no-repeat;
+}
+
+.icon-life {
+	background: url('../images/icons/add.gif') no-repeat;
+}
+
+.icon-live {
+	background: url('../images/icons/add.gif') no-repeat;
+}
+
+.icon-delete {
+	background: url('../images/icons/delete.gif') no-repeat;
+}
+
+.icon-refresh {
+	background: url('../images/icons/reflesh.png') no-repeat;
+}
+
+.icon-verify {
+	background: url('../images/icons/audit.gif') no-repeat;
+}
+
+.icon-more {
+	background: url('../images/icons/grid.png') no-repeat;
+}
+
+.icon-rename {
+	background: url('../images/icons/edit.gif') no-repeat;
+}
+
+.icon-movecate {
+	background: url('../images/icons/group-go.png') no-repeat;
+}
+
+.icon-refresh {
+	background: url('../images/icons/reflesh.png') no-repeat;
+}
+
+.icon-delete {
+	background: url('../images/icons/delete.gif') no-repeat;
+}
+
+.icon-more {
+	background: url('../images/icons/grid.png') no-repeat;
+}
+
+.icon-system {
+	background: url('../images/icons/system.png') no-repeat;
+}
+
+.icon-terminal {
+	background: url('../images/icons/terminal.png') no-repeat;
+}
+
+.icon-stuff {
+	background: url('../images/icons/stuff.png') no-repeat;
+}
+
+.icon-program {
+	background: url('../images/icons/program.png') no-repeat;
+}
+
+.icon-cardrecord {
+	background: url('../images/icons/cardrecord.png') no-repeat;
+}
+.icon-usrmgnt {
+	background: url('../images/icons/usrmgnt.png') no-repeat;
+}
+
+.icon-playplan {
+	background: url('../images/icons/playplan.png') no-repeat;
+}
+
+.icon-logmgnt {
+	background: url('../images/icons/logmgnt.png') no-repeat;
+}
+
+.icon-layoutpanel {
+	background: url('../images/icons/layoutpanel.png') no-repeat;
+}
+
+.icon-admachine1 {
+	background: url('../images/icons/admachine1.png') no-repeat;
+}
+
+.icon-admachine2 {
+	background: url('../images/icons/admachine2.png') no-repeat;
+}
+
+.icon-document_close {
+	background: url('../images/icons/document_close.png') no-repeat;
+}
+
+.icon-document_open {
+	background: url('../images/icons/document_open.png') no-repeat;
+}
+
+.icon-life {
+	background: url('../images/icons/add.gif') no-repeat;
+}
+
+.icon-upload {
+	background: url('../images/icons/arrow-up.gif') no-repeat;
+}
+
+.icon-download {
+	background: url('../images/icons/arrow-down.gif') no-repeat;
+}
+
+.icon-verify {
+	background: url('../images/icons/audit.gif') no-repeat;
+}
+
+.icon-nochecked {
+	background: url('../images/icons/tree_checkbox_0.gif') no-repeat;
+}
+
+.icon-all-checked {
+	background: url('../images/icons/tree_checkbox_1.gif') no-repeat;
+}
+
+.icon-some-checked {
+	background: url('../images/icons/tree_checkbox_2.gif') no-repeat;
+}
+
+.icon-doc {
+	background: url('../images/icons/doc_pic.png') no-repeat;
+}
+
+.bgtransparent {
+	background-color: transparent;
+}
+/*鏂板缁撴潫*/
+.landscapeLayout {
+	background: url('../images/icons/landscapeLayout.png') no-repeat center center;
+}
+
+.verticalLayout {
+	background: url('../images/icons/verticalLayout.png') no-repeat center center;
+}
+
+.styleMgnt_import {
+	background: url('../images/icons/styleMgnt_import.png') no-repeat center center;
+}
+
+.styleMgnt_export {
+	background: url('../images/icons/styleMgnt_export.png') no-repeat center center;
+}
+
+.itemMgnt_makePro {
+	background: url('../images/icons/itemMgnt_makePro.png') no-repeat center center;
+}
+
+.itemMgntEdit {
+	background: url('../images/icons/itemMgntEdit.png') no-repeat center center;
+}
+
+.itemMgnt_preProgram {
+	background: url('../images/icons/itemMgnt_preProgram.png') no-repeat center center;
+}
+
+.playplanMgnt_insert {
+	background: url('../images/icons/playplanMgnt_insert.png') no-repeat center center;
+}
+
+.stuffMgnt_auditPass {
+	background: url('../images/icons/stuffMgnt_auditPass.png') no-repeat center center;
+}
+
+.common_reject {
+	background: url('../images/icons/common_reject.png') no-repeat center center;
+}
+
+.stuffMgnt_setCategory {
+	background: url('../images/icons/stuffMgnt_setCategory.png') no-repeat center
+		center;
+}
+
+.stuffMgnt_editRemark {
+	background: url('../images/icons/stuffMgnt_editRemark.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_adRemoteLevelUp {
+	background: url('../images/icons/terminalMgnt_adRemoteLevelUp.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_changeGroup {
+	background: url('../images/icons/terminalMgnt_changeGroup.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_logExport {
+	background: url('../images/icons/terminalMgnt_logExport.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_adRealtimeMonitor {
+	background: url('../images/icons/terminalMgnt_adRealtimeMonitor.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_worktimeSetting {
+	background: url('../images/icons/terminalMgnt_worktimeSetting.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_volumnSetting {
+	background: url('../images/icons/terminalMgnt_volumnSetting.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_pwdSetting {
+	background: url('../images/icons/terminalMgnt_pwdSetting.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_screenSetting {
+	background: url('../images/icons/terminalMgnt_screenSetting.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_adRemoteControl {
+	background: url('../images/icons/terminalMgnt_adRemoteControl.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_adExport {
+	background: url('../images/icons/terminalMgnt_adExport.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_worktimeSetting {
+	background: url('../images/icons/terminalMgnt_worktimeSetting.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_networkSetting {
+	background: url('../images/icons/terminalMgnt_networkSetting.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_adControlpanel {
+	background: url('../images/icons/terminalMgnt_adControlpanel.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_adDownloadMonitor {
+	background: url('../images/icons/terminalMgnt_adDownloadMonitor.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_adLogMonitor {
+	background: url('../images/icons/terminalMgnt_adLogMonitor.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_adCurrentStatus {
+	background: url('../images/icons/terminalMgnt_adCurrentStatus.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_downtimeSetting {
+	background: url('../images/icons/terminalMgnt_downtimeSetting.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_worktimeSetting1 {
+	background: url('../images/icons/terminalMgnt_worktimeSetting.ico') no-repeat
+		center center;
+}
+
+.terminalMgnt_specialWorktimeSet {
+	background: url('../images/icons/terminalMgnt_specialWorktimeSet.ico') no-repeat
+		center center;
+}
+
+.terminalMgnt_powerOn {
+	background: url('../images/icons/terminalMgnt_powerOn.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_powerOff {
+	background: url('../images/icons/terminalMgnt_powerOff.png') no-repeat center
+		center;
+}
+
+.terminalMngt_reboot {
+	background: url('../images/icons/terminalMngt_reboot.png') no-repeat center center;
+}
+
+.itemMgnt_showTer {
+	background: url('../images/icons/itemMgnt_showTer.png') no-repeat center center;
+}
+
+.playplanMgnt_issued {
+	background: url('../images/icons/playplanMgnt_issued.png') no-repeat center center;
+}
+
+.styleMgnt_export1 {
+	background: url('../images/icons/styleMgnt_export1.png') no-repeat center center;
+}
+
+.terminalMngt_checkMemory {
+	background: url('../images/icons/terminalMngt_checkMemory.png') no-repeat center
+		center;
+}
+
+.terminalMngt_checkCPU {
+	background: url('../images/icons/terminalMngt_checkCPU.png') no-repeat center
+		center;
+}
+
+.terminalMngt_remotePlay {
+	background: url('../images/icons/terminalMngt_remotePlay.png') no-repeat center
+		center;
+}
+
+.terminalMngt_remotePause {
+	background: url('../images/icons/terminalMngt_remotePause.png') no-repeat center
+		center;
+}
+
+.terminalMngt_remoteStop {
+	background: url('../images/icons/terminalMngt_remoteStop.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_contentMoniter {
+	background: url('../images/icons/terminalMgnt_contentMoniter.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_downloadMonitor {
+	background: url('../images/icons/terminalMgnt_downloadMonitor.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_exit {
+	background: url('../images/icons/terminalMgnt_exit.png') no-repeat center center;
+}
+
+.terminalMgnt_fileManager {
+	background: url('../images/icons/terminalMgnt_fileManager.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_log {
+	background: url('../images/icons/terminalMgnt_log.png') no-repeat center center;
+}
+
+.terminalMgnt_Play {
+	background: url('../images/icons/terminalMgnt_Play.png') no-repeat center center;
+}
+
+.terminalMgnt_Pause {
+	background: url('../images/icons/terminalMgnt_Pause.png') no-repeat center center;
+}
+
+.terminalMgnt_realTimeMonitor {
+	background: url('../images/icons/terminalMgnt_realTimeMonitor.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_reboot {
+	background: url('../images/icons/terminalMgnt_reboot.png') no-repeat center center;
+}
+
+.terminalMgnt_screenshot {
+	background: url('../images/icons/terminalMgnt_screenshot.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_showInfo {
+	background: url('../images/icons/terminalMgnt_showInfo.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_start {
+	background: url('../images/icons/terminalMgnt_start.png') no-repeat center center;
+}
+
+.terminalMgnt_synctime {
+	background: url('../images/icons/terminalMgnt_synctime.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_terminalList {
+	background: url('../images/icons/terminalMgnt_terminalList.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_textModeMonitor {
+	background: url('../images/icons/terminalMgnt_textModeMonitor.png') no-repeat
+		center center;
+}
+
+.terminalMgnt_volumeControl {
+	background: url('../images/icons/terminalMgnt_volumeControl.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_playLog {
+	background: url('../images/icons/terminalMgnt_playLog.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_allReback {
+	background: url('../images/icons/terminalMgnt_allReback.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_errorLog {
+	background: url('../images/icons/terminalMgnt_errorLog.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_rename {
+	background: url('../images/icons/terminalMgnt_rename.png') no-repeat center
+		center;
+}
+
+.terminalMgnt_stuffKeepDays {
+	background: url('../images/icons/terminalMgnt_stuffKeepDays.png') no-repeat center
+		center;
+}
+
+.styleMgnt_moveUp {
+	background: url('../images/icons/moveUp.png') no-repeat center
+		center;
+}
+
+.styleMgnt_moveDown {
+	background: url('../images/icons/moveDown.png') no-repeat center
+		center;
+}
+
+.styleMgnt_keepWidth {
+	background: url('../images/icons/keepWidth.png') no-repeat center
+		center;
+}
+
+.styleMgnt_keepHeigth {
+	background: url('../images/icons/keepHeigth.png') no-repeat center
+		center;
+}
+
+.styleMgnt_fullScreen {
+	background: url('../images/icons/fullScreen.png') no-repeat center
+		center;
+}
+
+.styleMgnt_deleteWidget {
+	background: url('../images/icons/deleteWidget.png') no-repeat center
+		center;
+}
+
+.styleMgnt_clearWidget {
+	background: url('../images/icons/clearWidget.png') no-repeat center
+		center;
+}
+
+.playplanMgnt_exportEncryptPkg {
+	background: url('../images/icons/exportEncryptPkg.png') no-repeat center
+		center;
+}
+
+.playplanMgnt_exportNoEncryptPkg {
+	background: url('../images/icons/exportNoEncryptPkg.png') no-repeat center
+		center;
+}

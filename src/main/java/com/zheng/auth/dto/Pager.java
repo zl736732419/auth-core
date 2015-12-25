@@ -16,22 +16,23 @@ public class Pager<T> {
 	private List<T> rows; // 当前页查询出的数据
 
 	public Pager() {
-		
+
 	}
-	
+
 	public Pager(Integer pageNo, Integer pageSize, Integer totalRows) {
-		//需要容错处理
+		// 需要容错处理
 		this.pageNo = pageNo;
 		this.pageSize = pageSize;
 		this.totalRows = totalRows;
-		
-		this.pageNo = this.pageNo < 1 ? 1 : this.pageNo;
+
 		this.pageSize = this.pageSize < 1 ? 1 : this.pageSize;
+		this.pageNo = this.pageNo < 1 ? 1 : this.pageNo;
 		this.totalPages = (this.pageSize + this.totalRows - 1) / this.pageSize;
-		this.pageNo = this.pageNo > this.totalPages ? this.totalPages : this.pageNo;
-		
+		this.pageNo = this.pageNo > this.totalPages ? this.totalPages
+				: this.pageNo;
+
 	}
-	
+
 	public Integer getPageNo() {
 		return pageNo;
 	}
@@ -70,6 +71,13 @@ public class Pager<T> {
 
 	public void setRows(List<T> rows) {
 		this.rows = rows;
+	}
+
+	@Override
+	public String toString() {
+		return "Pager [pageNo=" + pageNo + ", pageSize=" + pageSize
+				+ ", totalPages=" + totalPages + ", totalRows=" + totalRows
+				+ "]";
 	}
 
 }
