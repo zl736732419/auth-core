@@ -138,5 +138,67 @@ public interface IBaseDao<T> {
 	 * @return
 	 */
 	public int getCount();
+	
+	/**
+	 * 根据sn加载对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午4:36:18
+	 * 
+	 * @param sn
+	 * @param clazz
+	 * @return
+	 */
+	public T loadBySn(String sn, Class<?> clazz);
+	
+	/**
+	 * 获取指定类型对象的排序号
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午4:46:18
+	 * 
+	 * @param parentId
+	 * @param clazz
+	 * @return
+	 */
+	public Integer getMaxOrder(Serializable parentId, Class<?> clazz);
 
+	/**
+	 * 根据id和类型加载该类型对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午5:21:43
+	 * 
+	 * @param id
+	 * @param clazz
+	 * @return
+	 */
+	public Object loadObj(Serializable id, Class<?> clazz);
+	
+	/**
+	 * 根据hql查询某一类型的对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午5:28:13
+	 * 
+	 * @param hql
+	 * @param params
+	 * @return
+	 */
+	public Object loadObjByHql(String hql, Object... params);
+	
+	
+	/**
+	 * 根据hql查询某一类型对象列表数据
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午5:22:27
+	 * 
+	 * @param hql
+	 * @param params
+	 * @return
+	 */
+	public List<?> listObj(String hql, Object... params);
+	
+	
 }

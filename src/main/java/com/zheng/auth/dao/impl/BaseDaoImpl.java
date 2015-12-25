@@ -15,7 +15,7 @@ import com.zheng.auth.dao.IBaseDao;
 import com.zheng.auth.dto.ObjectQuery;
 import com.zheng.auth.dto.Pager;
 
-public class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
+public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
 
 	private Class<?> clazz;
 
@@ -190,5 +190,55 @@ public class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
 	public int getCount() {
 		return getCount(null);
 	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T loadBySn(String sn, Class<?> clazz) {
+		String hql = "from " + clazz.getSimpleName() + " o where o.sn=" + sn;
+		Query query = getSession().createQuery(hql);
+		return (T) query.uniqueResult();
+	}
+
+	@Override
+	public Integer getMaxOrder(Serializable parentId, Class<?> clazz) {
+		String hql = "select max(o.order) from " + clazz.getSimpleName() + " o where 1=1 ";
+		if(parentId != null) {
+			hql += " and parentId = " + parentId;
+		}else {
+			hql += " parentId is null";
+		}
+		Query query = getSession().createQuery(hql);
+		return (Integer) query.uniqueResult();
+	}
+
+	@Override
+	public Object loadObj(Serializable id, Class<?> clazz) {
+		return getSession().load(clazz, id);
+	}
+
+	@Override
+	public List<?> listObj(String hql, Object... params) {
+		Query query = getSession().createQuery(hql);
+		if(params != null && params.length > 0) {
+			for(int i = 0; i < params.length; i++) {
+				query.setParameter(i, params[i]);
+			}
+		}
+		return query.list();
+	}
+
+	@Override
+	public Object loadObjByHql(String hql, Object... params) {
+		
+		Query query = getSession().createQuery(hql);
+		if(params != null && params.length >= 0) {
+			for(int i = 0; i < params.length; i++) {
+				query.setParameter(i, params[i]);
+			}
+		}
+		
+		return query.uniqueResult();
+	}
+	
 
 }
