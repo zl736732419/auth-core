@@ -1,4 +1,4 @@
-package com.zheng.domain;
+package com.zheng.auth.domain;
 
 /**
  * 系统资源接口，标识权限管理的资源

@@ -1,4 +1,4 @@
-package com.zheng.domain;
+package com.zheng.auth.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "t_menu_resource")
 public class MenuResource implements SystemResource {
-	public static final String RES_TYPE="menu";
+	public static final String RES_TYPE = "menu";
 	@Id
 	@GeneratedValue
 	private Long id;
@@ -20,7 +20,7 @@ public class MenuResource implements SystemResource {
 	 */
 	private String sn;
 	private String psn;
-	private MenuPos menuPos;
+	private Integer menuPos;
 	private String href;
 	private String icon;
 	private Integer order;
@@ -59,11 +59,11 @@ public class MenuResource implements SystemResource {
 		this.psn = psn;
 	}
 
-	public MenuPos getMenuPos() {
+	public Integer getMenuPos() {
 		return menuPos;
 	}
 
-	public void setMenuPos(MenuPos menuPos) {
+	public void setMenuPos(Integer menuPos) {
 		this.menuPos = menuPos;
 	}
 
@@ -100,7 +100,7 @@ public class MenuResource implements SystemResource {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="parentId")
+	@JoinColumn(name = "parentId")
 	public MenuResource getParent() {
 		return parent;
 	}

@@ -57,7 +57,11 @@
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="packagesToScan" value="com.zheng.shiro.domain"></property>
+		<property name="packagesToScan">
+			<list>
+				<value>com.zheng.auth.domain</value>
+			</list>
+		</property>
 		<property name="hibernateProperties">
 			<value>
 				hibernate.dialect=org.hibernate.dialect.MySQLDialect
@@ -86,7 +90,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut expression="execution(* com.zheng.service..*Impl.*(..))" id="pointcut"/>
+		<aop:pointcut expression="execution(* com.zheng.auth.service..*Impl.*(..))" id="pointcut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
 	</aop:config>
 	
