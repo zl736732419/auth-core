@@ -29,6 +29,24 @@ public class MenuResource implements SystemResource, Comparable<MenuResource> {
 	@JoinColumn(name = "parentId")
 	private MenuResource parent;
 
+	public MenuResource() {
+		
+	}
+	
+	public MenuResource(Long id, String name, String sn, String psn,
+			Integer menuPos, String href, String icon, Integer orderNum,
+			Integer display) {
+		this.id = id;
+		this.name = name;
+		this.sn = sn;
+		this.psn = psn;
+		this.menuPos = menuPos;
+		this.href = href;
+		this.icon = icon;
+		this.orderNum = orderNum;
+		this.display = display;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -93,7 +111,6 @@ public class MenuResource implements SystemResource, Comparable<MenuResource> {
 		this.display = display;
 	}
 
-
 	public Integer getOrderNum() {
 		return orderNum;
 	}
@@ -112,8 +129,8 @@ public class MenuResource implements SystemResource, Comparable<MenuResource> {
 
 	@Override
 	public int compareTo(MenuResource o) {
-		return (this.orderNum > o.getOrderNum() ? 1 : 
-			(this.orderNum == o.getOrderNum() ? 0 : -1));
+		return (this.orderNum > o.getOrderNum() ? 1 : (this.orderNum == o
+				.getOrderNum() ? 0 : -1));
 	}
 
 }

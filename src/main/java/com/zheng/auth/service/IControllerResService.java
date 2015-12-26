@@ -91,4 +91,10 @@ public interface IControllerResService extends IBaseService<ControllerResource>{
 	 * @return
 	 */
 	public ControllerOper loadOperBySn(String sn);
+	
+	/**
+	 * 根据包名初始化ControllerResources资源
+	 * @param packages
+	 */
+	public void initControllerRes(String[] packages);
 }

@@ -86,6 +86,8 @@ public class ControllerResDaoImpl extends BaseDaoImpl<ControllerResource> implem
 			dbOper.setName(oper.getName());
 			dbOper.setSn(oper.getSn());
 		}
+		dbOper.setRsn(parent.getSn());
+		dbOper.setRid(parent.getId());
 		
 		getSession().saveOrUpdate(dbOper);
 	}

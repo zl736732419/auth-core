@@ -192,9 +192,9 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements IBas
 	@SuppressWarnings("unchecked")
 	@Override
 	public T loadBySn(String sn, Class<?> clazz) {
-		String hql = "from " + clazz.getSimpleName() + " o where o.sn=" + sn;
+		String hql = "from " + clazz.getSimpleName() + " o where o.sn=?";
 		Query query = getSession().createQuery(hql);
-		return (T) query.uniqueResult();
+		return (T) findSingleByHql(hql, sn);
 	}
 
 	@Override

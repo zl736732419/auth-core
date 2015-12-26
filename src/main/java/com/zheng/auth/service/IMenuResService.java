@@ -48,4 +48,13 @@ public interface IMenuResService extends IBaseService<MenuResource> {
 	 * @return
 	 */
 	public List<MenuResource> listByParent(Integer pid);
+	
+	/**
+	 * 初始化menu菜单
+	 *
+	 * @author zhenglian
+	 * @data 2015年12月26日 下午3:37:12
+	 * @param packages
+	 */
+	public void initMenuResources(String[] packages);
 }

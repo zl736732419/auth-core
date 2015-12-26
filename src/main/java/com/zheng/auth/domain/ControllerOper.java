@@ -79,7 +79,7 @@ public class ControllerOper {
 	}
 
 	public void setMethodName(String methodName) {
-		if(StringUtils.isBlank(methodName)) {
+		if(StringUtils.isBlank(this.methodName)) {
 			this.methodName = methodName;
 		}else {
 			if(this.methodName.indexOf(methodName) == -1) {

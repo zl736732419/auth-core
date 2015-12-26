@@ -10,6 +10,6 @@ public class MenuPos {
 	public static final int MENU_ROOT = 0; //根菜单
 	public static final int NAV_TOP = 1; //顶部菜单
 	public static final int NAV_LEFT = 2; //左部菜单
-	public static final int MODEL_NAV = 3; //模块导航
-	public static final int MODEL_OPER = 4; //模块操作
+	public static final int MODEL_NAV = 3; //模块导航 在表格工具栏中
+	public static final int MODEL_OPER = 4; //模块操作  在表格列表中
 }

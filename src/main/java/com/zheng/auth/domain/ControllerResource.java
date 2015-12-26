@@ -21,7 +21,7 @@ public class ControllerResource implements SystemResource {
 	public static final String RES_TYPE = "controller";
 	@Id
 	@GeneratedValue
-	private Long id;
+	private Integer id;
 	private String name;
 	private String classname; // classname，默认使用类的权限类名，可能会存在多个值
 	private Integer orderNum; // 顺序
@@ -33,11 +33,11 @@ public class ControllerResource implements SystemResource {
 
 	private String psn; // 父级资源标识
 
-	public Long getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 
@@ -54,7 +54,7 @@ public class ControllerResource implements SystemResource {
 	}
 
 	public void setClassname(String classname) {
-		if (StringUtils.isBlank(classname)) {
+		if (StringUtils.isBlank(this.classname)) {
 			this.classname = classname;
 		} else {
 			if (this.classname.indexOf(classname) == -1) {

@@ -71,14 +71,12 @@ public class MenuResDaoImpl extends BaseDaoImpl<MenuResource> implements
 
 	@Override
 	public List<LeftMenuDto> listLeftNav() {
-		String hql = getSelectHql() + " from "
-				+ MenuResource.class.getSimpleName()
-				+ " m where m.menuPos=? and m.display=1 order by m.orderNum";
+		String hql = "select m from " + MenuResource.class.getSimpleName() + " m where m.menuPos=?";
 		List<MenuResource> mrs = findListByHql(hql, MenuPos.NAV_LEFT); // 得到左边所有菜单，包括父菜单和子菜单
 		// 这里构造菜单树对象
 		List<LeftMenuDto> lmrs = new ArrayList<>();
 		LeftMenuDto lmd = null;
-		// 查找父节点
+		// 添加父节点
 		for (MenuResource m : mrs) {
 			if (m.getParent() != null
 					&& m.getParent().getMenuPos() == MenuPos.MENU_ROOT) {
@@ -94,7 +92,7 @@ public class MenuResDaoImpl extends BaseDaoImpl<MenuResource> implements
 			if (m.getParent() != null
 					&& m.getParent().getMenuPos() == MenuPos.NAV_LEFT) {
 				lmd = new LeftMenuDto();
-				lmd.setParent(m);
+				lmd.setParent(m.getParent());
 				if(lmrs.contains(lmd)) {
 					lmrs.get(lmrs.indexOf(lmd)).getChildren().add(m);
 				}
