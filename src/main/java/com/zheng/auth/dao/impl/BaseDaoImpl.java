@@ -40,7 +40,6 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements IBas
 	@SuppressWarnings("unchecked")
 	@Override
 	public T save(T t) {
-
 		return (T) getHibernateTemplate().save(t);
 	}
 

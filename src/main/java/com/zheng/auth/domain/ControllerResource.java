@@ -23,8 +23,8 @@ public class ControllerResource implements SystemResource {
 	@GeneratedValue
 	private Long id;
 	private String name;
-	private String classname; //classname，默认使用类的权限类名，可能会存在多个值
-	private Integer order; // 顺序
+	private String classname; // classname，默认使用类的权限类名，可能会存在多个值
+	private Integer orderNum; // 顺序
 	@ManyToOne
 	@JoinColumn(name = "parentId")
 	private ControllerResource parent;
@@ -52,25 +52,25 @@ public class ControllerResource implements SystemResource {
 	public String getClassname() {
 		return classname;
 	}
-	
+
 	public void setClassname(String classname) {
-		if(StringUtils.isBlank(classname)) {
+		if (StringUtils.isBlank(classname)) {
 			this.classname = classname;
-		}else {
-			if(this.classname.indexOf(classname) == -1) {
+		} else {
+			if (this.classname.indexOf(classname) == -1) {
 				this.classname += "|" + classname;
 			}
 		}
 	}
 
-	public Integer getOrder() {
-		return order;
+	public Integer getOrderNum() {
+		return orderNum;
 	}
 
-	public void setOrder(Integer order) {
-		this.order = order;
+	public void setOrderNum(Integer orderNum) {
+		this.orderNum = orderNum;
 	}
-	
+
 	public ControllerResource getParent() {
 		return parent;
 	}

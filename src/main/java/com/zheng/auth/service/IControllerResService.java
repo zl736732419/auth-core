@@ -1,18 +1,11 @@
-package com.zheng.auth.dao;
+package com.zheng.auth.service;
 
 import java.util.List;
 
 import com.zheng.auth.domain.ControllerOper;
 import com.zheng.auth.domain.ControllerResource;
 
-/**
- * controller资源数据访问接口 其中将controller对应的方法操作也合并在一起
- *
- * @author zhenglian
- * @time 2015年12月25日 下午4:13:46
- */
-public interface IControllerResDao extends IBaseDao<ControllerResource> {
-
+public interface IControllerResService extends IBaseService<ControllerResource>{
 	/**
 	 * 将资源添加到父节点上
 	 * 
@@ -98,5 +91,4 @@ public interface IControllerResDao extends IBaseDao<ControllerResource> {
 	 * @return
 	 */
 	public ControllerOper loadOperBySn(String sn);
-
 }

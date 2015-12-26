@@ -3,15 +3,17 @@ package com.zheng.auth.dao.impl;
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Repository;
 
 import com.zheng.auth.dao.IControllerResDao;
 import com.zheng.auth.domain.ControllerOper;
 import com.zheng.auth.domain.ControllerResource;
 
+@Repository
 public class ControllerResDaoImpl extends BaseDaoImpl<ControllerResource> implements IControllerResDao {
 
 	private String getSelectHql() {
-		String hql = "select new ControllerResource(cr.id, cr.name,cr.sn,cr.psn, cr.classname, cr.order)";
+		String hql = "select new ControllerResource(cr.id, cr.name,cr.sn,cr.psn, cr.classname, cr.orderNum)";
 		return hql;
 	}
 	
@@ -30,11 +32,11 @@ public class ControllerResDaoImpl extends BaseDaoImpl<ControllerResource> implem
 		
 		ControllerResource self = loadBySn(cr.getSn(), ControllerResource.class);
 		if(self == null) { //是新增
-			if(cr.getOrder() <= 0) { //没有设置排序号
+			if(cr.getOrderNum() <= 0) { //没有设置排序号
 				if(parent == null) { //没有父节点
-					cr.setOrder(getMaxOrder(null, ControllerResource.class) + 1);
+					cr.setOrderNum(getMaxOrder(null, ControllerResource.class) + 1);
 				}else {
-					cr.setOrder(getMaxOrder(parent.getId(), ControllerResource.class) + 1);
+					cr.setOrderNum(getMaxOrder(parent.getId(), ControllerResource.class) + 1);
 				}
 			}
 			
@@ -42,8 +44,8 @@ public class ControllerResDaoImpl extends BaseDaoImpl<ControllerResource> implem
 		}else { //修改
 			self.setClassname(cr.getClassname());
 			self.setName(cr.getName());
-			if(cr.getOrder() > 0) {
-				self.setOrder(cr.getOrder());
+			if(cr.getOrderNum() > 0) {
+				self.setOrderNum(cr.getOrderNum());
 			}
 			self.setParent(cr.getParent());
 			self.setPsn(cr.getPsn());
@@ -56,9 +58,9 @@ public class ControllerResDaoImpl extends BaseDaoImpl<ControllerResource> implem
 	public List<ControllerResource> listByParent(Integer pid) {
 		String hql = null;
 		if(pid == null) {
-			hql = getSelectHql() + " from ControllerResource o where o.parent.id is null order by order asc";
+			hql = getSelectHql() + " from ControllerResource o where o.parent.id is null order by orderNum asc";
 		}else {
-			hql = getSelectHql() + " from ControllerResource o where o.parent.id=" + pid + " order by order asc";
+			hql = getSelectHql() + " from ControllerResource o where o.parent.id=" + pid + " order by orderNum asc";
 		}
 		
 		return findListByHql(hql, new Object[] {});

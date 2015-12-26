@@ -79,18 +79,21 @@
 	
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
+		<!-- 让所有的方法都加入事务管理，为了提高效率，可以把一些查询之类的方法设置为只读的事务 -->
 			<tx:method name="*" propagation="REQUIRED" read-only="true"/>
-			<tx:method name="get*" propagation="REQUIRED" read-only="true"/>
-			<tx:method name="find*" propagation="REQUIRED" read-only="true"/>
-			<tx:method name="delete*" propagation="REQUIRED" read-only="false"/>
-			<tx:method name="update*" propagation="REQUIRED" read-only="false"/>
-			<tx:method name="save*" propagation="REQUIRED" read-only="false"/>
-			<tx:method name="add*" propagation="REQUIRED" read-only="false"/>
+			<!-- 以下方法都是可能设计修改的方法，就无法设置为只读 -->
+			<tx:method name="add*" propagation="REQUIRED"/>
+			<tx:method name="del*" propagation="REQUIRED"/>
+			<tx:method name="update*" propagation="REQUIRED"/>
+			<tx:method name="save*" propagation="REQUIRED"/>
+			<tx:method name="clear*" propagation="REQUIRED"/>
+			<tx:method name="empty*" propagation="REQUIRED"/>
+			<tx:method name="init*" propagation="REQUIRED"/>
 		</tx:attributes>
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut expression="execution(* com.zheng.auth.service..*Impl.*(..))" id="pointcut"/>
+		<aop:pointcut expression="execution(* com.zheng.auth.service.impl.*Impl.*(..))" id="pointcut"/>
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="pointcut"/>
 	</aop:config>
 	

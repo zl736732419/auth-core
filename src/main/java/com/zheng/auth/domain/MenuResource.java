@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "t_menu_resource")
-public class MenuResource implements SystemResource {
+public class MenuResource implements SystemResource, Comparable<MenuResource> {
 	public static final String RES_TYPE = "menu";
 	@Id
 	@GeneratedValue
@@ -23,7 +23,7 @@ public class MenuResource implements SystemResource {
 	private Integer menuPos;
 	private String href;
 	private String icon;
-	private Integer order;
+	private Integer orderNum;
 	private Integer display;
 	@ManyToOne
 	@JoinColumn(name = "parentId")
@@ -93,12 +93,13 @@ public class MenuResource implements SystemResource {
 		this.display = display;
 	}
 
-	public Integer getOrder() {
-		return order;
+
+	public Integer getOrderNum() {
+		return orderNum;
 	}
 
-	public void setOrder(Integer order) {
-		this.order = order;
+	public void setOrderNum(Integer orderNum) {
+		this.orderNum = orderNum;
 	}
 
 	public MenuResource getParent() {
@@ -107,6 +108,12 @@ public class MenuResource implements SystemResource {
 
 	public void setParent(MenuResource parent) {
 		this.parent = parent;
+	}
+
+	@Override
+	public int compareTo(MenuResource o) {
+		return (this.orderNum > o.getOrderNum() ? 1 : 
+			(this.orderNum == o.getOrderNum() ? 0 : -1));
 	}
 
 }
