@@ -3,7 +3,7 @@ package com.zheng.auth.dao.impl;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
-
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -11,23 +11,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
 import com.zheng.auth.dao.IBaseDao;
+import com.zheng.auth.dto.ObjectQuery;
+import com.zheng.auth.dto.Pager;
 
-/**
- * 通用数据接口实现
- *
- * @author zhenglian
- * @data 2015年12月24日 下午9:39:55
- * @param <T>
- */
-public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements
-		IBaseDao<T> {
+public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements IBaseDao<T> {
+
 	private Class<?> clazz;
 
 	public BaseDaoImpl() {
-		ParameterizedType pt = (ParameterizedType) this.getClass()
+		ParameterizedType type = (ParameterizedType) this.getClass()
 				.getGenericSuperclass();
-		clazz = (Class<?>) pt.getActualTypeArguments()[0];
-
+		clazz = (Class<?>) type.getActualTypeArguments()[0];
 	}
 
 	public SessionFactory getFactory() {
@@ -39,13 +33,14 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements
 		super.setSessionFactory(factory);
 	}
 
-	protected Session getSession() {
+	public Session getSession() {
 		return getFactory().getCurrentSession();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T add(T t) {
+	public T save(T t) {
+
 		return (T) getHibernateTemplate().save(t);
 	}
 
@@ -56,13 +51,7 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements
 
 	@Override
 	public void delete(Serializable id) {
-		getHibernateTemplate().delete(load(id));
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public T load(Serializable id) {
-		return (T) getHibernateTemplate().load(clazz, id);
+		getHibernateTemplate().delete(findById(id));
 	}
 
 	@SuppressWarnings("unchecked")
@@ -73,58 +62,180 @@ public abstract class BaseDaoImpl<T> extends HibernateDaoSupport implements
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findAll() {
-		return (List<T>) getHibernateTemplate().loadAll(clazz);
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
-	public T findSingleByHql(String hql) {
+	public T findSingleByHql(String hql, Object... params) {
 		Query query = getSession().createQuery(hql);
+		if (params != null && params.length > 0) {
+			for (int i = 0; i < params.length; i++) {
+				query.setParameter(i, params[i]);
+			}
+		}
 		return (T) query.uniqueResult();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<T> findListByHql(String hql) {
+	public List<T> findListByHql(String hql, Object... params) {
 		Query query = getSession().createQuery(hql);
+		if (params != null && params.length > 0) {
+			for (int i = 0; i < params.length; i++) {
+				query.setParameter(i, params[i]);
+			}
+		}
+
 		return query.list();
 	}
 
 	@Override
-	public void executeUpdateHql(String hql) {
+	public void executeUpdateHql(String hql, Object... params) {
 		Query query = getSession().createQuery(hql);
+		if (params != null && params.length > 0) {
+			for (int i = 0; i < params.length; i++) {
+				query.setParameter(i, params[i]);
+			}
+		}
+
 		query.executeUpdate();
-	}
-
-	@Override
-	public void saveOrUpdate(T t) {
-		getSession().saveOrUpdate(t);
-	}
-
-	@Override
-	public int getMaxOrder(String psn) {
-		String hql = "select max(o.orderNum) from " + clazz
-				+ " o where o.psn=?";
-		Query query = getSession().createQuery(hql);
-		query.setParameter(0, psn);
-		return ((Long) query.uniqueResult()).intValue();
-	}
-
-	@Override
-	public int getMaxOrder() {
-		String hql = "select max(o.orderNum) from " + clazz + " o ";
-		Query query = getSession().createQuery(hql);
-		return ((Long) query.uniqueResult()).intValue();
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public T loadBySn(String sn) {
-		String hql = "from " + clazz + " o where o.sn=?";
+	public T findSingleByQuery(ObjectQuery query) {
+		String hql = " from " + clazz.getSimpleName() + " o where 1=1 ";
+		if (query != null && !StringUtils.isBlank(query.getWhere())) {
+			hql += query.getWhere();
+		}
+		Query q = getSession().createQuery(hql);
+		if (!query.getParams().isEmpty()) {
+			for (int i = 0; i < query.getParams().size(); i++) {
+				Object param = query.getParams().get(i);
+				q.setParameter(i, param);
+			}
+		}
+		return (T) q.uniqueResult();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<T> findListByQuery(ObjectQuery query) {
+		String hql = " from " + clazz.getSimpleName() + " o where 1=1 ";
+		if (query != null && !StringUtils.isBlank(query.getWhere())) {
+			hql += query.getWhere();
+		}
+		
+		Query q = getSession().createQuery(hql);
+		if (!query.getParams().isEmpty()) {
+			for (int i = 0; i < query.getParams().size(); i++) {
+				Object param = query.getParams().get(i);
+				q.setParameter(i, param);
+			}
+		}
+
+		// 设置分页
+		int start = (query.getPageNo() - 1) * query.getPageSize();
+
+		q.setFirstResult(start);
+		q.setMaxResults(query.getPageSize());
+		
+		return q.list();
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public Pager<T> findPagerByQuery(ObjectQuery query) {
+		int totalRows = getCount(query);
+		Pager<T> pager = new Pager<T>(query.getPageNo(), query.getPageSize(), totalRows);
+		
+		String hql = "from " + clazz.getSimpleName() + " o where 1=1 ";
+		if (query != null && !StringUtils.isBlank(query.getWhere())) {
+			hql += query.getWhere();
+		}
+		Query q = getSession().createQuery(hql);
+		if (!query.getParams().isEmpty()) {
+			for (int i = 0; i < query.getParams().size(); i++) {
+				Object param = query.getParams().get(i);
+				q.setParameter(i, param);
+			}
+		}
+		
+		// 设置分页
+		int start = (pager.getPageNo() - 1) * pager.getPageSize();
+		q.setFirstResult(start);
+		q.setMaxResults(pager.getPageSize());
+		
+		List<T> list = q.list();
+		pager.setRows(list);
+		
+		return pager;
+	}
+
+	@Override
+	public int getCount(ObjectQuery query) {
+		String hql = "select count(o) from " + clazz.getSimpleName() + " o where 1=1 ";
+		if(query != null && !StringUtils.isBlank(query.getWhere())) {
+			hql += query.getWhere();
+		}
+		Query q = getSession().createQuery(hql);
+		if(!query.getParams().isEmpty()) {
+			for (int i = 0; i < query.getParams().size(); i++) {
+				Object param = query.getParams().get(i);
+				q.setParameter(i, param);
+			}
+		}
+		
+		return ((Long) q.uniqueResult()).intValue();
+	}
+
+	@Override
+	public int getCount() {
+		return getCount(null);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public T loadBySn(String sn, Class<?> clazz) {
+		String hql = "from " + clazz.getSimpleName() + " o where o.sn=" + sn;
 		Query query = getSession().createQuery(hql);
-		query.setParameter(0, sn);
 		return (T) query.uniqueResult();
 	}
 
+	@Override
+	public Integer getMaxOrder(Serializable parentId, Class<?> clazz) {
+		String hql = "select max(o.order) from " + clazz.getSimpleName() + " o where 1=1 ";
+		if(parentId != null) {
+			hql += " and parentId = " + parentId;
+		}else {
+			hql += " parentId is null";
+		}
+		Query query = getSession().createQuery(hql);
+		return (Integer) query.uniqueResult();
+	}
+
+	@Override
+	public Object loadObj(Serializable id, Class<?> clazz) {
+		return getSession().load(clazz, id);
+	}
+
+	@Override
+	public List<?> listObj(String hql, Object... params) {
+		Query query = getSession().createQuery(hql);
+		if(params != null && params.length > 0) {
+			for(int i = 0; i < params.length; i++) {
+				query.setParameter(i, params[i]);
+			}
+		}
+		return query.list();
+	}
+
+	@Override
+	public Object loadObjByHql(String hql, Object... params) {
+		
+		Query query = getSession().createQuery(hql);
+		if(params != null && params.length >= 0) {
+			for(int i = 0; i < params.length; i++) {
+				query.setParameter(i, params[i]);
+			}
+		}
+		
+		return query.uniqueResult();
+	}
 }

@@ -19,7 +19,11 @@ public class UserRole {
 	@Id
 	@GeneratedValue
 	private Long id;
+	@ManyToOne
+	@JoinColumn(name="uid")
 	private User user;
+	@ManyToOne
+	@JoinColumn(name="rid")
 	private Role role;
 
 	public Long getId() {
@@ -31,8 +35,7 @@ public class UserRole {
 	}
 
 	
-	@ManyToOne
-	@JoinColumn(name="uid")
+	
 	public User getUser() {
 		return user;
 	}
@@ -41,8 +44,6 @@ public class UserRole {
 		this.user = user;
 	}
 
-	@ManyToOne
-	@JoinColumn(name="rid")
 	public Role getRole() {
 		return role;
 	}

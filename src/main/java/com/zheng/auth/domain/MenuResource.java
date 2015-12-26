@@ -25,6 +25,8 @@ public class MenuResource implements SystemResource {
 	private String icon;
 	private Integer order;
 	private Integer display;
+	@ManyToOne
+	@JoinColumn(name = "parentId")
 	private MenuResource parent;
 
 	public Long getId() {
@@ -99,8 +101,6 @@ public class MenuResource implements SystemResource {
 		this.order = order;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "parentId")
 	public MenuResource getParent() {
 		return parent;
 	}

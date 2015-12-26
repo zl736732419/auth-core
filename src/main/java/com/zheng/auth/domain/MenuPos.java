@@ -1,14 +1,14 @@
 package com.zheng.auth.domain;
 
 /**
- * 菜单位置枚举
+ * 菜单类型
  *
  * @author zhenglian
  * @data 2015年12月16日 下午10:12:09
  */
 public class MenuPos {
-	public static final Integer NAV_LEFT = 1; //左边导航
-	public static final Integer NAV_TOP = 2; //顶部导航
-	public static final Integer MODEL_NAV = 3; //模块导航
-	public static final Integer MODEL_OPER = 4; //模块菜单
+	public static final int NAV_TOP = 1; //顶部菜单
+	public static final int NAV_LEFT = 2; //左部菜单
+	public static final int MODEL_NAV = 3; //模块导航
+	public static final int MODEL_OPER = 4; //模块操作
 }

@@ -3,140 +3,201 @@ package com.zheng.auth.dao;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * 公共数据接口，定义通用的一些操作
- *
- * @author zhenglian
- * @data 2015年12月24日 下午9:37:04
- * @param <T>
- */
+import com.zheng.auth.dto.ObjectQuery;
+import com.zheng.auth.dto.Pager;
+
 public interface IBaseDao<T> {
 
 	/**
-	 * 添加对象
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午9:37:41
+	 * 保存对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:25:30
+	 * 
 	 * @param t
 	 * @return
 	 */
-	public T add(T t);
+	public T save(T t);
 
 	/**
 	 * 更新对象
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午9:37:56
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:25:46
+	 * 
 	 * @param t
 	 */
 	public void update(T t);
 
 	/**
-	 * 删除对象
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午9:38:20
+	 * 删除指定id的对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:26:03
+	 * 
 	 * @param id
 	 */
 	public void delete(Serializable id);
 
 	/**
-	 * 根据id加载对象
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午9:38:39
-	 * @param id
-	 * @return
-	 */
-	public T load(Serializable id);
-	
-	/**
-	 * 根据id查找对象
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午9:55:37
+	 * 根据id获取对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:26:36
+	 * 
 	 * @param id
 	 * @return
 	 */
 	public T findById(Serializable id);
-	
+
 	/**
-	 * 查询所有对象
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午9:55:59
-	 * @return
-	 */
-	public List<T> findAll();
-	
-	/**
-	 * 根据指定hql加载单一对象
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午9:56:25
+	 * 根据hql查询单一结果对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:26:54
+	 * 
 	 * @param hql
+	 * @param params
 	 * @return
 	 */
-	public T findSingleByHql(String hql);
-	
+	public T findSingleByHql(String hql, Object... params);
+
 	/**
-	 * 根据hql加载多条数据
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午9:57:33
+	 * 根据指定hql查询对象列表
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:28:02
+	 * 
 	 * @param hql
+	 * @param params
 	 * @return
 	 */
-	public List<T> findListByHql(String hql);
-	
+	public List<T> findListByHql(String hql, Object... params);
+
 	/**
-	 * 执行指定的hql语句，没有返回值
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午9:57:45
+	 * 执行更新操作
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:28:56
+	 * 
 	 * @param hql
+	 * @param params
 	 */
-	public void executeUpdateHql(String hql);
-	
+	public void executeUpdateHql(String hql, Object... params);
+
 	/**
-	 * 保存或者更新对象
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午10:02:06
-	 * @param t
-	 */
-	public void saveOrUpdate(T t);
-	
-	/**
-	 * 获取父节点下最大排序号
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午10:10:25
-	 * @param psn
+	 * 根据查询条件获取单个对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:49:22
+	 * 
+	 * @param query
 	 * @return
 	 */
-	public int getMaxOrder(String psn);
-	
+	public T findSingleByQuery(ObjectQuery query);
+
 	/**
-	 * 获取同级最大排序号，没有父节点
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午10:10:53
+	 * 根据查询条件获取列表数据
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:50:07
+	 * 
+	 * @param query
 	 * @return
 	 */
-	public int getMaxOrder();
+	public List<T> findListByQuery(ObjectQuery query);
+
+	/**
+	 * 根据查询条件获取一页的数据
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:50:32
+	 * 
+	 * @param query
+	 * @return
+	 */
+	public Pager<T> findPagerByQuery(ObjectQuery query);
+
+	/**
+	 * 根据查询条件获取记录数
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:51:17
+	 * 
+	 * @param query
+	 * @return
+	 */
+	public int getCount(ObjectQuery query);
+
+	/**
+	 * 获取所有记录条数
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 上午11:51:46
+	 * 
+	 * @return
+	 */
+	public int getCount();
 	
 	/**
-	 * 根据sn查找对象
-	 *
-	 * @author zhenglian
-	 * @data 2015年12月24日 下午10:11:29
+	 * 根据sn加载对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午4:36:18
+	 * 
 	 * @param sn
+	 * @param clazz
 	 * @return
 	 */
-	public T loadBySn(String sn);
+	public T loadBySn(String sn, Class<?> clazz);
+	
+	/**
+	 * 获取指定类型对象的排序号
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午4:46:18
+	 * 
+	 * @param parentId
+	 * @param clazz
+	 * @return
+	 */
+	public Integer getMaxOrder(Serializable parentId, Class<?> clazz);
+
+	/**
+	 * 根据id和类型加载该类型对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午5:21:43
+	 * 
+	 * @param id
+	 * @param clazz
+	 * @return
+	 */
+	public Object loadObj(Serializable id, Class<?> clazz);
+	
+	/**
+	 * 根据hql查询某一类型的对象
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午5:28:13
+	 * 
+	 * @param hql
+	 * @param params
+	 * @return
+	 */
+	public Object loadObjByHql(String hql, Object... params);
 	
 	
-	
+	/**
+	 * 根据hql查询某一类型对象列表数据
+	 * 
+	 * @auther zhenglian
+	 * @date 2015年12月25日 下午5:22:27
+	 * 
+	 * @param hql
+	 * @param params
+	 * @return
+	 */
+	public List<?> listObj(String hql, Object... params);
 	
 }
