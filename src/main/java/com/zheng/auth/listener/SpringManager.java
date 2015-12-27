@@ -26,4 +26,8 @@ public class SpringManager implements
 		return ctx;
 	}
 	
+	public static Object getBean(String beanName, Class<?> clazz) {
+		return ctx.getBean(beanName, clazz);
+	}
+	
 }
